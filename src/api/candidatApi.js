@@ -21,6 +21,16 @@ export const candidatApi = {
     return apiClient.post(`/candidats/${id}/refuser`);
   },
 
+  // Generic candidate update (when backend exposes PUT /candidats/{id})
+  update: (id, payload = {}) => {
+    return apiClient.put(`/candidats/${id}`, payload);
+  },
+
+  // Explicit endpoint used to move a candidate back to pending
+  setPending: (id) => {
+    return apiClient.post(`/candidats/${id}/pending`);
+  },
+
   // Get ranking (classement)
   getClassement: (params = {}) => {
     return apiClient.get('/candidats/classement', { params });

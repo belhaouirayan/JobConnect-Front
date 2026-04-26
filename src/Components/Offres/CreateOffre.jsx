@@ -31,28 +31,52 @@ const CreateOffre = ({ onCancel, onSuccess }) => {
   };
 
   useEffect(() => {
+    const normalizeList = (response) => {
+      if (Array.isArray(response)) return response;
+      if (Array.isArray(response?.data)) return response.data;
+      return [];
+    };
+
     const fetchContrats = async () => {
       try {
-        const response = await apiRequest('/contrats', 'GET');
-        if (response && response.data) setContratsList(response.data);
-        else if (Array.isArray(response)) setContratsList(response);
-      } catch (error) { console.error("Erreur contrats", error); }
+        const response = await apiRequest('/contract-types', 'GET');
+        const list = normalizeList(response);
+        setContratsList(list);
+
+        if (list.length === 0) {
+          console.debug('[CreateOffre] /api/contract-types returned an empty array.', response);
+        }
+      } catch (error) {
+        console.error('[CreateOffre] Failed to fetch contract types:', error);
+      }
     };
 
     const fetchManagers = async () => {
       try {
         const response = await apiRequest('/managers', 'GET');
-        if (response && response.data) setManagersList(response.data);
-        else if (Array.isArray(response)) setManagersList(response);
-      } catch (error) { console.error("Erreur managers", error); }
+        const list = normalizeList(response);
+        setManagersList(list);
+
+        if (list.length === 0) {
+          console.debug('[CreateOffre] /api/managers returned an empty array.', response);
+        }
+      } catch (error) {
+        console.error('[CreateOffre] Failed to fetch managers:', error);
+      }
     };
 
     const fetchCurrencies = async () => {
       try {
         const response = await apiRequest('/currencies', 'GET');
-        if (response && response.data) setCurrenciesList(response.data);
-        else if (Array.isArray(response)) setCurrenciesList(response);
-      } catch (error) { console.error("Erreur devises", error); }
+        const list = normalizeList(response);
+        setCurrenciesList(list);
+
+        if (list.length === 0) {
+          console.debug('[CreateOffre] /api/currencies returned an empty array.', response);
+        }
+      } catch (error) {
+        console.error('[CreateOffre] Failed to fetch currencies:', error);
+      }
     };
 
     const fetchPlatforms = async () => {

@@ -152,8 +152,8 @@ const CandidateDetail = () => {
   const handlePending = async () => {
     if (!window.confirm("Mettre ce candidat en attente ?")) return;
     try {
-      await candidatApi.update(id, { statut: 'en_attente' });
-      setCandidate(prev => ({ ...prev, statut: 'en_attente' }));
+      const resp = await candidatApi.setPending(id);
+      setCandidate(parseAIData(resp.data?.candidat || { ...candidate, statut: 'en_attente' }));
       showToast('success', 'Candidat mis en attente.');
     } catch (e) {
       console.error(e);

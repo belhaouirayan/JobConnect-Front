@@ -50,15 +50,35 @@ const EditModal = ({ offre, onClose, onSuccess }) => {
 
     const fetchLists = async () => {
       try {
-        const [contrats, managers, currencies] = await Promise.all([
-          apiRequest('/contrats', 'GET'),
+        const [contractTypes, managers, currencies] = await Promise.all([
+          apiRequest('/contract-types', 'GET'),
           apiRequest('/managers', 'GET'),
           apiRequest('/currencies', 'GET')
         ]);
+
+        const normalizeList = (response) => {
+          if (Array.isArray(response)) return response;
+          if (Array.isArray(response?.data)) return response.data;
+          return [];
+        };
+
+        const contractList = normalizeList(contractTypes);
+        const managerList = normalizeList(managers);
+        const currencyList = normalizeList(currencies);
         
-        if (contrats) setContratsList(Array.isArray(contrats.data) ? contrats.data : contrats);
-        if (managers) setManagersList(Array.isArray(managers.data) ? managers.data : managers);
-        if (currencies) setCurrenciesList(Array.isArray(currencies.data) ? currencies.data : currencies);
+        setContratsList(contractList);
+        setManagersList(managerList);
+        setCurrenciesList(currencyList);
+
+        if (contractList.length === 0) {
+          console.debug('[EditModal] /api/contract-types returned an empty array.', contractTypes);
+        }
+        if (managerList.length === 0) {
+          console.debug('[EditModal] /api/managers returned an empty array.', managers);
+        }
+        if (currencyList.length === 0) {
+          console.debug('[EditModal] /api/currencies returned an empty array.', currencies);
+        }
       } catch (error) {
         console.error("Erreur lors de la récupération des listes:", error);
       }
