@@ -1,0 +1,48 @@
+﻿commit 29bc5a0513ffe9259542553fa0f44b41d5eabe58
+Author: rayan <redxyz336@gmail.com>
+Date:   Tue Mar 31 11:00:52 2026 +0100
+
+    improuvements DM Front
+
+M	src/App.js
+M	src/Components/ActualitesRH/ChatWindow.jsx
+D	src/Components/ActualitesRH/DirectMessagesModal.jsx
+M	src/Components/ActualitesRH/UserSelector.jsx
+M	src/Components/Sidebar/Sidebar.jsx
+A	src/pages/DirectMessages/DirectMessages.jsx
+
+commit 5183d5c781baa4fc13dab58570c44240b190b23b
+Author: rayan <redxyz336@gmail.com>
+Date:   Mon Mar 30 15:48:17 2026 +0100
+
+    DM imrouvement
+
+M	src/App.js
+M	src/Components/Sidebar/Sidebar.jsx
+M	src/Components/Sidebar/SidebarMenu.jsx
+M	src/Components/settings_components/ApiSettings.jsx
+M	src/pages/ActualitesRH/ActualitesRH.jsx
+A	src/pages/Settings/AdminSettings.jsx
+M	src/pages/Settings/Settings.jsx
+
+commit d040873cd37e0ab472f27c9f1ff592065041d7b4
+Author: rayan <redxyz336@gmail.com>
+Date:   Fri Mar 27 09:50:47 2026 +0100
+
+    grammar correction
+
+M	src/Components/Entretiens/Pagination.jsx
+
+commit 2b943918578c285da2b3562bc453fd7add59fe77
+Merge: 1857cd6 9da16c9
+Author: Zineb-Azhar <zanouba.znb2006@gmail.com>
+Date:   Thu Mar 26 14:39:31 2026 +0100
+
+    ilyas front
+
+commit 9da16c9ec44b9868ea5c2b0d257f3cbbbb4613de
+Merge: 54a606c 3b16989
+Author: ilyas <ilyasmahfoud55@gmail.com>
+Date:   Thu Mar 26 12:52:12 2026 +0100
+
+    frontend + offre frontend
