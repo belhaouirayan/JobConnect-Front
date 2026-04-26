@@ -1,0 +1,180 @@
+/* ═══════════════════════════════════════════════════════════════
+   JobConnect PFE — Design Tokens
+   Blue/Gray minimalist palette + font-bold hierarchy
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Primary Blue Scale ── */
+  --jc-blue-50:  #eff6ff;
+  --jc-blue-100: #dbeafe;
+  --jc-blue-200: #bfdbfe;
+  --jc-blue-300: #93c5fd;
+  --jc-blue-400: #60a5fa;
+  --jc-blue-500: #3b82f6;
+  --jc-blue-600: #2563eb;
+  --jc-blue-700: #1d4ed8;
+  --jc-blue-800: #1e40af;
+  --jc-blue-900: #1e3a5f;
+
+  /* ── Neutral Gray Scale ── */
+  --jc-gray-50:  #f8fafc;
+  --jc-gray-100: #f1f5f9;
+  --jc-gray-200: #e2e8f0;
+  --jc-gray-300: #cbd5e1;
+  --jc-gray-400: #94a3b8;
+  --jc-gray-500: #64748b;
+  --jc-gray-600: #475569;
+  --jc-gray-700: #334155;
+  --jc-gray-800: #1e293b;
+  --jc-gray-900: #0f172a;
+
+  /* ── Semantic Colors ── */
+  --jc-success: #10b981;
+  --jc-warning: #f59e0b;
+  --jc-danger:  #ef4444;
+  --jc-info:    #3b82f6;
+
+  /* ── Typography ── */
+  --jc-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --jc-font-heading: 'Outfit', 'Inter', sans-serif;
+
+  /* ── Spacing ── */
+  --jc-radius-sm: 6px;
+  --jc-radius-md: 10px;
+  --jc-radius-lg: 16px;
+  --jc-radius-xl: 24px;
+}
+
+/* ═══ Typography Hierarchy (font-bold based) ═══ */
+
+.jc-heading {
+  font-family: var(--jc-font-heading);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--jc-gray-900);
+}
+
+.jc-subheading {
+  font-family: var(--jc-font-family);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--jc-gray-800);
+}
+
+.jc-label {
+  font-family: var(--jc-font-family);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--jc-gray-500);
+}
+
+.jc-body {
+  font-family: var(--jc-font-family);
+  font-weight: 400;
+  color: var(--jc-gray-600);
+}
+
+.jc-bold {
+  font-weight: 700;
+}
+
+.jc-extrabold {
+  font-weight: 800;
+}
+
+/* ═══ Dark Mode Overrides ═══ */
+.dark .jc-heading   { color: var(--jc-gray-50); }
+.dark .jc-subheading { color: var(--jc-gray-100); }
+.dark .jc-label     { color: var(--jc-gray-400); }
+.dark .jc-body      { color: var(--jc-gray-300); }
+
+/* ═══ Component Utilities ═══ */
+
+.jc-card {
+  background: white;
+  border: 1px solid var(--jc-gray-200);
+  border-radius: var(--jc-radius-lg);
+  transition: all 0.2s ease;
+}
+.dark .jc-card {
+  background: var(--jc-gray-800);
+  border-color: var(--jc-gray-700);
+}
+
+.jc-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.jc-input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  background: var(--jc-gray-50);
+  border: 1px solid var(--jc-gray-200);
+  border-radius: var(--jc-radius-md);
+  font-size: 0.875rem;
+  font-family: var(--jc-font-family);
+  color: var(--jc-gray-900);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.jc-input:focus {
+  border-color: var(--jc-blue-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+.dark .jc-input {
+  background: var(--jc-gray-700);
+  border-color: var(--jc-gray-600);
+  color: var(--jc-gray-100);
+}
+
+.jc-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: var(--jc-blue-600);
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: var(--jc-radius-md);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.jc-btn-primary:hover { background: var(--jc-blue-700); }
+.jc-btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.jc-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--jc-gray-600);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  border: 1px solid var(--jc-gray-300);
+  border-radius: var(--jc-radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.jc-btn-outline:hover {
+  background: var(--jc-gray-50);
+  border-color: var(--jc-gray-400);
+}
+.dark .jc-btn-outline {
+  color: var(--jc-gray-300);
+  border-color: var(--jc-gray-600);
+}
+.dark .jc-btn-outline:hover {
+  background: var(--jc-gray-700);
+}
+
+/* ═══ Responsive ═══ */
+@media (max-width: 768px) {
+  .jc-heading { font-size: 1.25rem; }
+}

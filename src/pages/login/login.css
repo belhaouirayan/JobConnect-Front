@@ -1,0 +1,108 @@
+/* login.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
+
+/* Optionnel : pour mieux correspondre au logo */
+.logo-text {
+  position: relative;
+}
+
+.logo-text::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #2d3748 50%, #4a90e2 50%);
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.login-card {
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.login-image {
+  flex: 1;
+  display: none;
+}
+
+.login-form {
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .login-image {
+    display: flex;
+  }
+}
+
+/* Effets supplémentaires */
+.input-container input:focus {
+  outline: none;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+/* Animation du logo */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.login-image svg {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Animation du logo */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.login-image img {
+  animation: float 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+
+.login-image svg {
+  width: 100%;
+  height: 100%;
+}
+
+.login-button {
+  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background: linear-gradient(135deg, #326fd3 0%, rgb(26,61,118)100%);
+  box-shadow: 0 6px 12px rgba(2, 74, 150, 0.3);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.login-button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
