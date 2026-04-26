@@ -1,0 +1,134 @@
+/* DigitalCVForm — Multi-step Digital CV */
+.dcv-container { max-width: 680px; margin: 0 auto; }
+
+/* Step indicator */
+.dcv-steps {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+}
+.dcv-step {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: all 0.3s;
+  cursor: default;
+  border: 1px solid var(--jc-gray-200);
+  background: var(--jc-gray-50);
+  color: var(--jc-gray-400);
+}
+.dcv-step.active {
+  background: var(--jc-blue-600);
+  color: white;
+  border-color: var(--jc-blue-600);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+.dcv-step.completed {
+  background: var(--jc-blue-50);
+  color: var(--jc-blue-700);
+  border-color: var(--jc-blue-200);
+}
+.dark .dcv-step {
+  background: var(--jc-gray-800);
+  border-color: var(--jc-gray-700);
+  color: var(--jc-gray-500);
+}
+.dark .dcv-step.active {
+  background: var(--jc-blue-600);
+  color: white;
+  border-color: var(--jc-blue-600);
+}
+.dark .dcv-step.completed {
+  background: var(--jc-blue-900);
+  color: var(--jc-blue-300);
+  border-color: var(--jc-blue-800);
+}
+
+/* Progress bar */
+.dcv-progress {
+  height: 4px;
+  background: var(--jc-gray-200);
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.dcv-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--jc-blue-500), var(--jc-blue-600));
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+/* Dynamic list entries */
+.dcv-entry {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid var(--jc-gray-200);
+  border-radius: var(--jc-radius-md);
+  margin-bottom: 0.75rem;
+  background: var(--jc-gray-50);
+}
+.dark .dcv-entry {
+  background: var(--jc-gray-800);
+  border-color: var(--jc-gray-700);
+}
+.dcv-entry-remove {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--jc-danger);
+  font-weight: 800;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.dcv-entry-remove:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Skills tags */
+.dcv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+.dcv-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  background: var(--jc-blue-50);
+  color: var(--jc-blue-700);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.dark .dcv-tag {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--jc-blue-300);
+}
+.dcv-tag button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.875rem;
+  line-height: 1;
+  opacity: 0.6;
+}
+.dcv-tag button:hover { opacity: 1; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .dcv-steps { flex-direction: column; gap: 0.375rem; }
+  .dcv-step { padding: 0.5rem; font-size: 0.6875rem; }
+}

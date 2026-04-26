@@ -1,0 +1,235 @@
+/* src/Components/3D/DecisionPanel.css */
+
+/* ── Dashboard Stats Strip ── */
+.dp-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dp-stat-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.dp-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.dp-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.dp-stat-card.offers::before { background: linear-gradient(90deg, #6366f1, #8b5cf6); }
+.dp-stat-card.candidates::before { background: linear-gradient(90deg, #06b6d4, #0ea5e9); }
+.dp-stat-card.pending::before { background: linear-gradient(90deg, #f59e0b, #f97316); }
+.dp-stat-card.interviews::before { background: linear-gradient(90deg, #10b981, #14b8a6); }
+
+/* ── Filters Bar ── */
+.dp-filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+}
+
+.dp-filter-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.dp-filter-input:focus {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.dp-filter-select {
+  padding: 0.625rem 2rem 0.625rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+  font-size: 0.875rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  outline: none;
+}
+
+/* ── Candidate Cards ── */
+.dp-candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+.dp-candidate-card {
+  border-radius: 1rem;
+  border: 1px solid;
+  padding: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.dp-candidate-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.12);
+}
+
+/* ── AI Score Badge ── */
+.dp-score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.875rem;
+  position: relative;
+}
+
+.dp-score-badge.high { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+.dp-score-badge.medium { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+.dp-score-badge.low { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+.dp-score-badge.none { background: linear-gradient(135deg, #6b7280, #4b5563); color: white; }
+
+/* ── Action Buttons ── */
+.dp-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dp-action-btn:hover {
+  transform: translateY(-1px);
+}
+
+.dp-action-btn.accept {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.dp-action-btn.refuse {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.dp-action-btn.hire {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+}
+
+.dp-action-btn.delete {
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid #fecaca;
+}
+
+.dp-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Status Badges ── */
+.dp-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* ── Pagination ── */
+.dp-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid;
+}
+
+.dp-page-btn {
+  padding: 0.5rem 0.875rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dp-page-btn.active {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  border-color: transparent;
+}
+
+.dp-page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Favorite Star ── */
+.dp-fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: transform 0.2s;
+  padding: 0.25rem;
+}
+
+.dp-fav-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ── Loading skeleton ── */
+@keyframes dp-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.dp-skeleton {
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: dp-shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+
+.dark .dp-skeleton {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+}
