@@ -7,7 +7,6 @@ const EditModal = ({ offre, onClose, onSuccess }) => {
     titre: '',
     lieu: '',
     contrat_id: '',
-    manager_id: '',
     salaire: '',
     id_currency: '',
     competences: '',
@@ -23,7 +22,6 @@ const EditModal = ({ offre, onClose, onSuccess }) => {
   });
 
   const [contratsList, setContratsList] = useState([]);
-  const [managersList, setManagersList] = useState([]);
   const [currenciesList, setCurrenciesList] = useState([]);
 
   useEffect(() => {
@@ -32,7 +30,6 @@ const EditModal = ({ offre, onClose, onSuccess }) => {
         titre: offre.titre || '',
         lieu: offre.lieu || '',
         contrat_id: offre.contrat_id || '',
-        manager_id: offre.manager_id || '',
         salaire: offre.salaire || '',
         id_currency: offre.id_currency || '',
         competences: offre.competences || '',
@@ -50,9 +47,8 @@ const EditModal = ({ offre, onClose, onSuccess }) => {
 
     const fetchLists = async () => {
       try {
-        const [contractTypes, managers, currencies] = await Promise.all([
+        const [contractTypes, currencies] = await Promise.all([
           apiRequest('/contract-types', 'GET'),
-          apiRequest('/managers', 'GET'),
           apiRequest('/currencies', 'GET')
         ]);
 
@@ -63,18 +59,13 @@ const EditModal = ({ offre, onClose, onSuccess }) => {
         };
 
         const contractList = normalizeList(contractTypes);
-        const managerList = normalizeList(managers);
         const currencyList = normalizeList(currencies);
         
         setContratsList(contractList);
-        setManagersList(managerList);
         setCurrenciesList(currencyList);
 
         if (contractList.length === 0) {
           console.debug('[EditModal] /api/contract-types returned an empty array.', contractTypes);
-        }
-        if (managerList.length === 0) {
-          console.debug('[EditModal] /api/managers returned an empty array.', managers);
         }
         if (currencyList.length === 0) {
           console.debug('[EditModal] /api/currencies returned an empty array.', currencies);
@@ -102,7 +93,6 @@ const EditModal = ({ offre, onClose, onSuccess }) => {
       const dataToSubmit = {
         ...formData,
         contrat_id: formData.contrat_id ? parseInt(formData.contrat_id, 10) : null,
-        manager_id: formData.manager_id ? parseInt(formData.manager_id, 10) : null,
         id_currency: formData.id_currency ? parseInt(formData.id_currency, 10) : null,
         date_limite: formData.date_limite || null,
       };
@@ -151,14 +141,6 @@ const EditModal = ({ offre, onClose, onSuccess }) => {
                 className="w-full bg-gray-50 dark:bg-[#2d3748] border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500">
                 <option value="">Sélectionner</option>
                 {contratsList.map(c => <option key={c.id_contrat} value={c.id_contrat}>{c.type}</option>)}
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1 flex items-center gap-1"><FiUser/> Manager Responsable</label>
-              <select name="manager_id" value={formData.manager_id} onChange={handleInputChange} required
-                className="w-full bg-gray-50 dark:bg-[#2d3748] border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500">
-                <option value="">Assigner un manager</option>
-                {managersList.map(m => <option key={m.id_employe} value={m.id_employe}>{m.nom}</option>)}
               </select>
             </div>
           </div>

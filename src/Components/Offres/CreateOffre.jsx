@@ -7,7 +7,6 @@ import AIChatAssistant from './AIChatAssistant';
 
 const CreateOffre = ({ onCancel, onSuccess }) => {
   const [contratsList, setContratsList] = useState([]);
-  const [managersList, setManagersList] = useState([]);
   const [currenciesList, setCurrenciesList] = useState([]);
   const [availablePlatforms, setAvailablePlatforms] = useState([]);
   const [selectedPlatforms, setSelectedPlatforms] = useState([]);
@@ -18,7 +17,7 @@ const CreateOffre = ({ onCancel, onSuccess }) => {
   const [submitting, setSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
-    titre: '', lieu: '', contrat_id: '', manager_id: '', salaire: '',
+    titre: '', lieu: '', contrat_id: '', salaire: '',
     id_currency: '', competences: '', date_limite: '', description: '',
     require_permit: false,
     require_diplome: false,
@@ -51,19 +50,6 @@ const CreateOffre = ({ onCancel, onSuccess }) => {
       }
     };
 
-    const fetchManagers = async () => {
-      try {
-        const response = await apiRequest('/managers', 'GET');
-        const list = normalizeList(response);
-        setManagersList(list);
-
-        if (list.length === 0) {
-          console.debug('[CreateOffre] /api/managers returned an empty array.', response);
-        }
-      } catch (error) {
-        console.error('[CreateOffre] Failed to fetch managers:', error);
-      }
-    };
 
     const fetchCurrencies = async () => {
       try {
@@ -87,7 +73,6 @@ const CreateOffre = ({ onCancel, onSuccess }) => {
     };
 
     fetchContrats();
-    fetchManagers();
     fetchCurrencies();
     fetchPlatforms();
   }, []);
@@ -143,7 +128,6 @@ const CreateOffre = ({ onCancel, onSuccess }) => {
       titre: formData.titre,
       lieu: formData.lieu,
       contrat_id: parseInt(formData.contrat_id, 10),
-      manager_id: formData.manager_id ? parseInt(formData.manager_id, 10) : null,
       salaire: formData.salaire || null,
       id_currency: formData.id_currency ? parseInt(formData.id_currency, 10) : null,
       competences: formData.competences || null,
@@ -242,18 +226,6 @@ const CreateOffre = ({ onCancel, onSuccess }) => {
               </select>
             </div>
 
-            <div>
-              <label className="block text-sm mb-1 font-medium flex items-center gap-1">
-                <FiUser /> Manager Responsable *
-              </label>
-              <select name="manager_id" value={formData.manager_id} onChange={handleInputChange} required
-                className="w-full bg-white dark:bg-[#1e222d] border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-200">
-                <option value="">Assigner à un manager</option>
-                {managersList.map((manager) => (
-                  <option key={manager.id_employe} value={manager.id_employe}>{manager.nom}</option>
-                ))}
-              </select>
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
