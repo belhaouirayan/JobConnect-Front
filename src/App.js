@@ -109,16 +109,16 @@ function App() {
             <Route path="/interview/respond/:token" element={<EntretienConfirm />} />
 
             {/* ── Recruitment (Protected) ── */}
-            <Route path="/recrutement/dashboard" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur']}><Layout><DashboardRecrt /></Layout></RoleProtectedRoute>} />
-            <Route path="/recrutement/test" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur']}><Layout><Offres /></Layout></RoleProtectedRoute>} />
-            <Route path="/recrutement/candidats" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur']}><Layout><CandidatesList /></Layout></RoleProtectedRoute>} />
-            <Route path="/recrutement/candidat/:id" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur']}><Layout><CandidateDetail /></Layout></RoleProtectedRoute>} />
-            <Route path="/recrutement/entretien" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur']}><Layout><Candidats /></Layout></RoleProtectedRoute>} />
-            <Route path="/recrutement/decision-finale" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur']}><Layout><FinalDecision /></Layout></RoleProtectedRoute>} />
-            <Route path="/recrutement/decision-detail/:id" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur']}><Layout><FinalDecisionDetail /></Layout></RoleProtectedRoute>} />
-            <Route path="/recrutement/postuler" element={<RoleProtectedRoute allowedRoles={['rh', 'manager']}><Layout><Postuler /></Layout></RoleProtectedRoute>} />
-            <Route path="/recrutement/settings" element={<RoleProtectedRoute allowedRoles={['rh', 'manager']}><Layout><Settings /></Layout></RoleProtectedRoute>} />
-            <Route path="/recrutement/admin-settings" element={<RoleProtectedRoute allowedRoles={['rh', 'manager']}><Layout><AdminSettings /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/dashboard" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur', 'admin']}><Layout><DashboardRecrt /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/test" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur', 'admin']}><Layout><Offres /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/candidats" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur', 'admin']}><Layout><CandidatesList /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/candidat/:id" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur', 'admin']}><Layout><CandidateDetail /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/entretien" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur', 'admin']}><Layout><Candidats /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/decision-finale" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur', 'admin']}><Layout><FinalDecision /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/decision-detail/:id" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'lecteur', 'admin']}><Layout><FinalDecisionDetail /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/postuler" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'admin']}><Layout><Postuler /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/settings" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'admin']}><Layout><Settings /></Layout></RoleProtectedRoute>} />
+            <Route path="/recrutement/admin-settings" element={<RoleProtectedRoute allowedRoles={['rh', 'manager', 'admin']}><Layout><AdminSettings /></Layout></RoleProtectedRoute>} />
             <Route path="/recrutement/admin/validation" element={<RoleProtectedRoute allowedRoles={['admin']}><Layout><ValidationInscriptions /></Layout></RoleProtectedRoute>} />
             <Route path="/recrutement/admin/moderation" element={<RoleProtectedRoute allowedRoles={['admin']}><Layout><ModerationOffres /></Layout></RoleProtectedRoute>} />
 

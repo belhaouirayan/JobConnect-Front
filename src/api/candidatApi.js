@@ -43,7 +43,7 @@ export const candidatApi = {
 
   // Trigger AI analysis
   analyserIA: (id) => {
-    return apiClient.post(`/candidats/${id}/analyser-ia`);
+    return apiClient.get(`/candidats/${id}/analyser-ia`);
   },
 
   // Toggle favorite status

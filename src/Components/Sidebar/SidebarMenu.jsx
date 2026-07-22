@@ -18,37 +18,37 @@ const SidebarMenu = ({ isCollapsed, activeDropdown, toggleDropdown }) => {
     {
       title: t("dashboard") || "Tableau de bord",
       path: "/recrutement/dashboard",
-      roles: ['rh', 'manager'],
+      roles: ['rh', 'manager', 'admin'],
     },
     {
       title: t("Gestion des offres") || "Gestion des offres",
       path: "/recrutement/test",
-      roles: ['rh', 'manager'],
+      roles: ['rh', 'manager', 'admin'],
     },
     {
       title: t("Candidats") || "Candidats",
       path: "/recrutement/candidats",
-      roles: ['rh', 'manager'],
+      roles: ['rh', 'manager', 'admin'],
     },
     {
       title: t("Entretiens") || "Entretiens",
       path: "/recrutement/entretien",
-      roles: ['rh', 'manager'],
+      roles: ['rh', 'manager', 'admin'],
     },
     {
       title: t("Décisions") || "Décisions",
       path: "/recrutement/decision-finale",
-      roles: ['rh', 'manager'],
+      roles: ['rh', 'manager', 'admin'],
     },
     {
       title: t("settings") || "Paramètres",
       path: "/recrutement/settings",
-      roles: ['rh', 'manager'],
+      roles: ['rh', 'manager', 'admin'],
     },
     {
       title: "Paramètres Plateforme",
       path: "/recrutement/admin-settings",
-      roles: ['rh', 'manager'],
+      roles: ['rh', 'manager', 'admin'],
     },
     {
       title: "Validation Inscriptions",
